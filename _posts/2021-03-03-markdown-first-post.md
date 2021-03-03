@@ -11,11 +11,6 @@ category: blog
 author: jiin
 ---
 
+# Posting 연습
 
-
-# 포스트 연습
-
-나의 첫 포스팅
-
-허허허
-
+[github 블로그 만들기 레퍼런스](https://devinlife.com/howto/)
