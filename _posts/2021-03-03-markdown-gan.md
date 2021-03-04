@@ -4,7 +4,6 @@ layout: post
 category: blog
 author: jiin
 use_math: true
-comments: true
 ---
 
 Goodfellow, Ian J., et al. "Generative adversarial networks." *arXiv preprint arXiv:1406.2661* (2014).
