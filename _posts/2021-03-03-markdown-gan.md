@@ -1,6 +1,6 @@
 ---
 title: "Generative Adversarial Networks"
-layout: single
+layout: post
 category: blog
 author: jiin
 use_math: true
