@@ -14,3 +14,5 @@ author: jiin
 # Posting 연습
 
 [github 블로그 만들기 레퍼런스](https://devinlife.com/howto/)
+
+[githbu 블로그에 수식 쓰기](https://mkkim85.github.io/blog-apply-mathjax-to-jekyll-and-github-pages/)

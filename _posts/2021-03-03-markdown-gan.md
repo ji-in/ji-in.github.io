@@ -11,11 +11,11 @@ Goodfellow, Ian J., et al. "Generative adversarial networks." *arXiv preprint ar
 
 ## 목차
 
-1. Introduction
-2. Related work
-3. Adversarial nets
-4. Theoretical Results
-5. Experiments
+1. [Introduction](#1.-introduction)
+2. [Related work](#2.-related-work)
+3. [Adversarial nets](#3.-adversarial-nets)
+4. [Theoretical Results]
+5. [Experiments]
 
 <br>
 
@@ -66,7 +66,13 @@ Backpropagation과 dropout algorithms를 사용해서 두 개의 모델(generati
 
 ## 3. Adversarial nets
 
-Adversarial modeling framework는 모델들이 둘다 multilayer perceptron일 때 가장 쉽다. 데이터에 대해 generator의 분포 This formula $f(x) = x^2$ is an example.
+Generative model과 discriminative model이 모두 다중 레이어 퍼셉트론일 때 adversarial modeling framework가 가장 간단하다.
+
+데이터 $x$에 대해 generator의 분포 $p{g}$를 학습하기 위해, 미리 input noise variables인 $p{z}(z)$를 정의한다. 
+
+그 후 $G(z;\theta{g})$로 data space에 대한 mapping을 나타냈고, 거기에서 $G$는 파라미터 $\theta{g}$와 함께 다중 레이어 퍼셉트론에 의해 나타내지는 미분가능한 함수이다. 
+
+또한 두 번째 다중 레이어 퍼셉트론 $D(z;\theta{d})$를 정의했고 그것은 하나의 스칼라 값을 출력한다. $D(x)$는 $p_{g}$가 아닌 데이터로부터 $x$가 나올 확률을 나타낸다. 우리는 training samples와 $G$에서 만들어진 samples 모두에게 올바른 레이블을 할당할 확률을 최대화하기 위해 $D$를 훈련시킨다. 우리는 동시에 $log(1-D(G(z))))$을 최소화하기 위해 $G$를 훈련한다. 
 
 ------
 
