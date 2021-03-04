@@ -66,7 +66,7 @@ Backpropagation과 dropout algorithms를 사용해서 두 개의 모델(generati
 
 ## 3. Adversarial nets
 
-Adversarial modeling framework는 모델들이 둘다 multilayer perceptron일 때 가장 쉽다. 데이터에 대해 generator의 분포 $x_{a}$
+Adversarial modeling framework는 모델들이 둘다 multilayer perceptron일 때 가장 쉽다. 데이터에 대해 generator의 분포 This formula $f(x) = x^2$ is an example.
 
 ------
 

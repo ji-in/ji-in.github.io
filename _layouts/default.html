@@ -26,6 +26,9 @@ layout: compress
     </style>
 
 </head>
+{% if page.use_math %}
+  {% include mathjax_support.html %}
+{% endif %}
 <body>
 
     <div class="wrapper-{% if site.width == "normal" %}normal{% elsif site.width == "large" %}large{% endif %}">
