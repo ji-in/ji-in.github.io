@@ -1,6 +1,7 @@
 ---
 title: "Generative Adversarial Networks"
 layout: post
+permalink: /gan/
 category: blog
 author: jiin
 ---
@@ -15,7 +16,9 @@ Goodfellow, Ian J., et al. "Generative adversarial networks." *arXiv preprint ar
 4. Theoretical Results
 5. Experiments
 
-## 
+<br>
+
+<br>
 
 ## 1. Introduction
 
@@ -35,15 +38,34 @@ Generative model은 multilayer perceptron 구조로, random noise가 주어지�
 
 Discriminative model도 역시 multilayer perceptron 구조를 가진다.
 
-backpropagation과 dropout algorithms를 사용해서 두 개의 모델(generative model & discriminative model)을 훈련시키고, forward propagation을 사용해서 generative model로부터 sample을 생성한다. Approximate inference와 Markov chains는 필요없다.
+Backpropagation과 dropout algorithms를 사용해서 두 개의 모델(generative model & discriminative model)을 훈련시키고, forward propagation을 사용해서 generative model로부터 sample을 생성한다. Approximate inference와 Markov chains는 필요없다.
 
 <br>
 
 <br>
 
-## 2. Related work
+## 2. Related work 
 
+`lack of background knowledge...`
 
+* Restricted Boltzmann machines (RBMs) [27, 16]
+* Deep Boltzmann machines (DBMs) [26]
+* Markov chain Monte Carlo (MCMC) [3, 5]
+* Deep belief networks (DBNs) [16]
+* score matching [18]
+* Noise-contrastive estimation (NCE) [13]
+* Generative stochastic network [5]
+* Denoising auto-encoders [4]
+* piecewise linear units [19, 9, 10]
+* auto-encoding variational Bayes [20]
+
+<br>
+
+<br>
+
+## 3. Adversarial nets
+
+Adversarial modeling framework는 모델들이 둘다 multilayer perceptron일 때 가장 쉽다. 데이터 $x$에 대해 generator의 분포 
 
 ------
 
@@ -51,7 +73,7 @@ backpropagation과 dropout algorithms를 사용해서 두 개의 모델(generati
 
 ### Piecewise Linear Unit
 
-$PLU(x) == max( alpha (x+c)-c,`min( alpha (x-c)+c,`x))$
+$PLU(x) == max( alpha (x+c)-c,`min( alpha (x-c)+c,`x))$ -> 수정하기
 
 ![PLU](..\assets\gan\plu.PNG)
 
