@@ -68,8 +68,6 @@ Generative model과 discriminative model이 모두 다중 레이어 퍼셉트론
 
 즉, $D$와 $G$는 value function $V(G, D)$와 함께 two-player minimax game을 한다.
 
-
-
 Eq 1.
 $$
 \min_{G}\max_{D}V(D, G)=\mathbb{E}_{x\sim p_{data}}[logD(x)]+\mathbb{E}_{z\sim p_z(z)}[log(1-D(G(z)))]
@@ -88,9 +86,11 @@ Figure 1을 보자.  훈련의 내부 루프에서 완료될 때까지 $D$를 �
 
 <br>
 
-![Fig1](C:\Users\jiinkim\Desktop\ji-in.github.io\assets\gan\fig1.PNG)
+![Fig1](..\assets\gan\fig1.PNG)
 
-Figure 1: Generative adversarial nets는 동시에 discriminative distribution ($D$, blue, dashed line)을 동시에 업데이트 시키면서 훈련하고 그래서 이것은 data generating distribution (black, dotted line)으로부터의 samples $p_x$를 generative distribution $p_g$ (G) (green, solid line)로부터 구별한다. 
+Figure 1: 
+
+Generative adversarial nets는 동시에 discriminative distribution ($D$, blue, dashed line)을 동시에 업데이트 시키면서 훈련하고 그래서 이것은 data generating distribution (black, dotted line)으로부터의 samples $p_x$를 generative distribution $p_g$ (G) (green, solid line)로부터 구별한다. 
 
 아래의 수평선은 $z$가 sampled되는 domain이고, 이 경우 uniformly하다. 위쪽 수평선은 $x$의 일부이다. 
 
