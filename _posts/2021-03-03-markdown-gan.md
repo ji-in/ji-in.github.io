@@ -1,8 +1,10 @@
 ---
 title: "Generative Adversarial Networks"
-layout: post
+layout: single
 category: blog
 author: jiin
+use_math: true
+comments: true
 ---
 
 Goodfellow, Ian J., et al. "Generative adversarial networks." *arXiv preprint arXiv:1406.2661* (2014).
@@ -64,7 +66,7 @@ Backpropagation과 dropout algorithms를 사용해서 두 개의 모델(generati
 
 ## 3. Adversarial nets
 
-Adversarial modeling framework는 모델들이 둘다 multilayer perceptron일 때 가장 쉽다. 데이터 ${x}$에 대해 generator의 분포 
+Adversarial modeling framework는 모델들이 둘다 multilayer perceptron일 때 가장 쉽다. 데이터 에 대해 generator의 분포 $$\sum (\alpha \pm \beta)$$
 
 ------
 
