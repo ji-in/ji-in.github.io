@@ -1,7 +1,6 @@
 ---
 title: "Generative Adversarial Networks"
 layout: post
-permalink: /gan/
 category: blog
 author: jiin
 ---
