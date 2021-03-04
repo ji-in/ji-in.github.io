@@ -2,9 +2,9 @@
 title: "Generative Adversarial Networks"
 layout: post
 category: blog
-author: jiin
 star: true
 use_math: true
+author: jiin
 ---
 
 Goodfellow, Ian J., et al. "Generative adversarial networks." *arXiv preprint arXiv:1406.2661* (2014).
