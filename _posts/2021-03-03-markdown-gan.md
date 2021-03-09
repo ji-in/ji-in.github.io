@@ -7,9 +7,7 @@ use_math: true
 author: jiin
 ---
 
-Goodfellow, Ian J., et al. "Generative adversarial networks." *arXiv preprint arXiv:1406.2661* (2014).
-
-[TOC]
+**Goodfellow, Ian J., et al. "Generative adversarial networks." *arXiv preprint arXiv:1406.2661* (2014).**
 
 <br>
 
@@ -70,13 +68,13 @@ Adversarial modeling framework는 generative model과 discriminative model이 �
 
 <br> 
 
-$\min_{G}\max_{D}V(D, G)=\mathbb{E}_{x\sim p_{data}}[logD(x)]+\mathbb{E}_{z\sim p_z(z)}[log(1-D(G(z)))]$          (1)
+<img src="C:\Users\jiinkim\Desktop\ji-in.github.io\assets\gan\eq1.PNG" style="zoom:80%;" />
 
 <br>
 
 Figure 1을 보자.  
 
-훈련의 내부 루프에서 완료될 때까지 $D$를 최적화 하는 것은 계산적으로 금지되어 있고, 유한한 데이터셋은 overfitting을 발생시킬 것이다. 대신에, 우리는 교대로 $k$번 $D$를 최적화하고 $1$번 $G$를 최적화한다. $D$에서의 결과가 최적의 결과 가까이 유지되고, $G$가 충분히 천천히 변화할때까지 유지된다. 
+우리는 교대로 $k$번 $D$를 최적화하고 $1$번 $G$를 최적화한다. $G$가 충분히 천천히 변화할때까지 $D$에서 최적의 결과가 유지된다. 
 
 <br>
 
@@ -86,27 +84,74 @@ $G$를 $log(1-D(G(z)))$를 최소화시키기 위해 학습하는 것보다 $log
 
 <br>
 
-![Fig1](..\assets\gan\fig1.PNG)
+![Figure1](..\assets\gan\fig1.PNG)
 
-**Figure 1:** 
+Figure 1:
 
 - Data generating distribution : black, dotted line
-- Discriminative distribution : blue, dashed line
-- Generative distribution : green, solid line
+- <span style="color:blue">Discriminative distribution : blue, dashed line</span>
+- <span style="color:green">Generative distribution : green, solid line</span>
 
-Generative adversarial nets는 discriminative distribution의 갱신과 훈련을 동시에 하고, data generating distribution으로부터의 samples $p_x$를 generative distribution $p_g$로부터 구별한다.
+Discriminative distribution는 갱신과 훈련을 동시에 하고, $p_x$를 $p_g$로부터 구별한다.
 
-아래 수평선은 $z$가 sampled되는 domain이고, 이 경우 균일하다. 위의 수평선은 $x$의 일부이다. 
+아래에 있는 수평선은 $z$가 sampled되는 domain이고, 위에 있는 수평선은 $x$의 일부이다. 
 
-화살표가 몰려있는 부분에서 $G$는 줄어드는 모양이고, 그렇지 않은 부분에서 $G$는 늘어나는 모양이다.
+화살표가 몰려있는 부분에서 $G$는 아래로 떨어지는 모양이고, 그렇지 않은 부분에서 $G$는 옆으로 퍼지는 모양이다.
 
-**각각의 그림들을 개별적으로 설명**
+**각각의 그림들을 개별적으로 설명해보자**
 
-- (a) 수렴하는 부분에서 $p_g$는 $p_data$와 유사하고 $D$는 부분적으로만 맞다. 
-- (b) $D$는 데이터로부터 samples를 구별하기 위해 훈련되고, $D^{*}(x)=\frac{p_{data}(x)}{p_{data}(x)+p_{g}(x))}$로 수렴한다.
-- (c) $G$를 갱신한 후에, $D$의 기울기는 $G(z)$가 data로 분류될 가능성이 더 높은 영역으로 흐르도록 안내한다.
-- (d) 훈련의 몇 단계를 거친 후, 만약 $G$와 $D$가 충분히 capacity가 있다면, 그들은 둘 다 개선할 수 없는 지점에 도달할 것이다. 왜냐하면 $p_g=p_data$.
-- discriminator는 두 개의 분포 사이에서 미분할 수 없다, 즉, $D(x)=\frac{1}{2}$
+- (a) 수렴하는 부분에서 $p_g$는 $p_data$와 유사하다.
+- (b) $D$는 데이터로부터 samples를 구별하기 위해 훈련되고, $D^{*}(x)=\frac{p_{data}(x)}{p_{data}(x)+p_{g}(x))}$로 수렴한다. (수렴하면 $\frac{1}{2}$이 된다)
+- (c) $G$를 갱신한 후에, $D$의 기울기는 $G(z)$가 data로 분류될 가능성이 더 높은 영역으로 갈 수 있도록 안내한다.
+- (d) 훈련을 몇 번 한 후, 만약 $G$와 $D$가 충분히 capacity가 많다면(학습 파라미터의 수가 많다면), $G$와 $D$는 $p_g=p_data$이기 때문에 포화될 것이다. Discriminator는 $D(x)=\frac{1}{2}$가 된다.
+
+<br>
+
+<br>
+
+## 4. Theoretical Results
+
+Generator $G$는 암묵적으로 probability distribution $p_g$로 정의된다. $z\sim p_z$일 때 distribution of the samples $G(z)$가 얻어지기 때문이다. 그러므로, 우리는 충분한 capacity와 훈련 시간이 주어진다면, Algorithm 1이 $p_data$의 좋은 estimator로 수렴되길 원한다. 이 섹션의 결과는 파라미터가 없는 환경에서 수행된다. 예를 들어, 우리는 무한한 capacity와 함께 모델을 나타낸다. probability density functions의 공간에서 수렴하는 것을 학습함으로써.
+
+<br>
+
+우리는 section 3.1에서 이 minimax game이 $p_g=p_data$에 대해 global optimum을 가지는 것을 보여줄 것이다. 우리는 그런 후 section 4.2에서 Algorithm 1이 Eq 1을 최적화하는 것을 보여주고, 그러므로 바라는 결과를 얻는다.
+
+<br>
+
+<img src="..\assets\gan\algorithm1.PNG" style="zoom:80%;" />
+
+
+
+## 4.1 Global Optimality of  $p_g=p_data$
+
+우리는 먼저 어느 주어진 generator $G$를 위해 optimal discriminator $D$를 고려한다.
+
+**명제 1.** $G$가 고정된 경우, optimal discriminator $D$는 다음과 같다.
+
+<img src="C:\Users\jiinkim\Desktop\ji-in.github.io\assets\gan\eq2.PNG" style="zoom:70%;" />
+
+**증명.**
+
+아무 generator $G$가 주어졌을 때 discriminator $D$에 대한 training criterion은 quantity $V(G, D)$를 최대화한다.
+
+<img src="C:\Users\jiinkim\Desktop\ji-in.github.io\assets\gan\eq3.PNG" style="zoom:70%;" />
+
+$(a,b)\in \mathbb{R}^2 \setminus \left\{0, 0\right \}$에 대해서, $y\rightarrow a log(y)+b log(1-y)$는 $\frac{a}{a+b}$에서 $\left [ 0, 1 \right ]$에서 그것의 maximum을 가진다. discriminator는 $Supp(p_{data})\cup Supp(p_g)$의 밖에서 정의될 필요가 없다. 증명이 끝났다.
+
+<br>
+
+$D$를 위한 목적 함수를 training하는 것은 estimating the conditional probability $P(Y=y|x)$를 위해 log-likelihood를 최대화 시키는 것으로 해석되고, $Y$는 $x$가 $p_data$로부터 왔는지 (with $y=1$) $p_g$로부터 왔는지 (with $y=0$)를 나타낸다. Eq. 1에 있는 minimax game은 다음과 같이 다시 정의된다:
+
+<img src="C:\Users\jiinkim\Desktop\ji-in.github.io\assets\gan\eq4.PNG" style="zoom:70%;" />
+
+<br>
+
+**이론 1.** virtual training criterion $C(G)$의 global minimum은  $p_g=p_data$와 필요충분조건일 때 달성된다. 그 점에서 $C(G)$는 $-log4$의 값을 가진다.
+
+**증명.**
+
+$p_g=p_data$에 대해서, D^{*}_G(x)=\frac{1}{2} (Eq. 2를 고려해보아라).
 
 ------
 
@@ -114,7 +159,7 @@ Generative adversarial nets는 discriminative distribution의 갱신과 훈련�
 
 ### Piecewise Linear Unit
 
-$PLU(x) == max( alpha (x+c)-c,`min( alpha (x-c)+c,`x))$ -> 수정하기
+$PLU(x)\equiv max(\alpha (x+c)-c, min(\alpha (x-c)+c, x))$
 
 ![PLU](..\assets\gan\plu.PNG)
 
