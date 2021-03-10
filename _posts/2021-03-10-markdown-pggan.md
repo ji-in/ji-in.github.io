@@ -128,8 +128,6 @@ Minibatch의 각 example에 대해 statistics가 만들어지고, 그것을 레�
 
 ## 4. Normalization in Generator and Discriminator
 
-<br>
-
 ### 4.1. Equalized Learning Rate
 
 Gaussian distribution을 사용해서 가중치를 초기화 하고, runtime 동안에 가중치를 조정한다.
@@ -152,8 +150,11 @@ $\hat{w}_i=w_i/c$를 사용한다. $w_i$는 가중치이고, $c$는 He 초기화
     <img src="..\assets\pggan\norm.PNG" style="zoom:80%;" />
     variant of local response normalization
 </p>
+$N$: feature map의 수
 
-$N$: feature map의 수, $a_x,y$: pixel $(x, y)$에서의 original feature vector, $b_x,y$: pixel $(x, y)$에서의 normalized feature vector
+$a_x,y$: pixel $(x, y)$에서의 original feature vector
+
+$b_x,y$: pixel $(x, y)$에서의 normalized feature vector
 
 이 방법은 결과를 바꾸지는 않지만, training 중에 signal의 크기가 갑자기 커지는 현상을 막아준다.
 
