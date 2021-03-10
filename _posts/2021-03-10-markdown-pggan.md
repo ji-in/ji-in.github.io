@@ -89,14 +89,15 @@ D에서도 위와 같은 방식으로 진행한다.
 <br>
 
 <p align="center">
-    <img src="..\assets\pggan\generator.png" style="zoom:80%;" />
+    <img src="..\assets\pggan\generator.png" />
     Generator
 </p>
 
 <p align="center">
-    <img src="..\assets\pggan\discriminator.png" style="zoom:80%;" />
+    <img src="..\assets\pggan\discriminator.png" />
     Discriminator
 </p>
+
 
 
 
