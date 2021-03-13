@@ -147,8 +147,8 @@ $\hat{w}_i=w_i/c$를 사용한다. $w_i$는 가중치이고, $c$는 He 초기화
 
 <p align="center">
     <img src="..\assets\pggan\norm.PNG" style="zoom:80%;" />
-    variant of local response normalization
 </p>
+
 $N$: feature map의 수
 
 $a_x,y$: pixel $(x, y)$에서의 original feature vector
@@ -194,10 +194,9 @@ SWD에서, 각 열은 Laplacian pyramid의 level을 나타내고, 마지막 열�
     <img src="..\assets\pggan\figure3.PNG" />
     Figure 3
 </p>
+**(a) - (g)** 는 Table 1의 행에 해당하는 CelebA 예제들이다. 이것들은 내부적으로 수렴하지 않는다. 
 
-(a) - (g) 는 Table 1의 행에 해당하는 CelebA 예제들이다. 이것들은 내부적으로 수렴하지 않는다. 
-
-(h)는 우리의 수렴된 결과이다.
+**(h)**는 우리의 수렴된 결과이다.
 
 <br>
 
@@ -205,21 +204,21 @@ SWD에서, 각 열은 Laplacian pyramid의 level을 나타내고, 마지막 열�
 
 MS-SSIM은 outputs 사이에서의 variation만을 측정하기 때문에 generated images와 training set의 유사성을 판단할 수 없다. 그러나, SWD는 generated images의 분포가 training set와 유사하다는 것을 올바르게 찾는다.
 
-첫 번째 configuration (a)는 Gulrajani et al. (2017)이다. Generator에서 batch normalization을 사용하고 Discriminator에서 layer normalization을 사용하며, minibatch 크기는 64이다. 
+첫 번째 configuration **(a)**는 Gulrajani et al. (2017)이다. Generator에서 batch normalization을 사용하고 Discriminator에서 layer normalization을 사용하며, minibatch 크기는 64이다. 
 
-(b)는 네트워크의 progressive growing을 추가했고, 더 좋은 결과를 낸다. 
+**(b)**는 네트워크의 progressive growing을 추가했고, 더 좋은 결과를 낸다. 
 
-주요한 목표는 고해상도 이미지를 만드는 것이다. 고해상도 이미지를 만드려면 메모리 제한으로 인해 mini-batches의 크기를 줄여야 한다. (c)에서 minibatch 크기를 64에서 16으로 줄였다. 그 때 생성된 이미지는 상당히 부자연스럽다. MS-SSIM과 SWD에서도 결과가 좋지 않은 것을 확인할 수 있다.
+주요한 목표는 고해상도 이미지를 만드는 것이다. 고해상도 이미지를 만드려면 메모리 제한으로 인해 mini-batches의 크기를 줄여야 한다. **(c)**에서 minibatch 크기를 64에서 16으로 줄였다. 그 때 생성된 이미지는 상당히 부자연스럽다. MS-SSIM과 SWD에서도 결과가 좋지 않은 것을 확인할 수 있다.
 
-(d)는 hyperparameters를 조정해서 training process를 안정화시키고, batch normalization과 layer normalization을 제거했다.
+**(d)**는 hyperparameters를 조정해서 training process를 안정화시키고, batch normalization과 layer normalization을 제거했다.
 
-(e*)는 minibatch discrimination을 사용하지만, 그다지 평가 지표의 값들을 개선하지 못한다.
+**(e*)**는 minibatch discrimination을 사용하지만, 그다지 평가 지표의 값들을 개선하지 못한다.
 
-대조적으로 우리의 minibatch standard deviation (e)는 average SWD와 이미지들을 개선한다.
+대조적으로 우리의 minibatch standard deviation **(e)**는 average SWD와 이미지들을 개선한다.
 
-그런 후, (f)와 (g)에서 우리의 contribution을 추가해서, 전반적인 SWD를 향상시키고 이미지의 질을 높인다.
+그런 후, **(f)**와 **(g)**에서 우리의 contribution을 추가해서, 전반적인 SWD를 향상시키고 이미지의 질을 높인다.
 
-마지막으로, (h)에서 제대로 된 네트워크(PGGAN)를 사용하고 더 오랫동안 training 한다 - 결과가 가장 좋다.
+마지막으로, **(h)**에서 제대로 된 네트워크(PGGAN)를 사용하고 더 오랫동안 training 한다 - 결과가 가장 좋다.
 
 <br>
 
@@ -232,29 +231,25 @@ MS-SSIM은 outputs 사이에서의 variation만을 측정하기 때문에 genera
 
 Figure 4는 SWD metric과 raw image throughput의 관점에서 progressive growing의 효과를 나타낸다. 
 
-Training speed와 convergence에서 progressive growing의 효과를 나타낸다. 타이밍은 NVIDIA Tesla P100을 사용한 single-GPU setup에서 측정된다. 
+NVIDIA Tesla P100을 사용한 single-GPU setup에서 측정했다.
 
-(a) 128 x 128 해상도를 가진 CelebA를 Gulrajani et al. (2017) 네트워크에 넣고 training을 한 것이다. 각 그래프는 Laplacian pyramid의 한 레벨에서 sliced Wasserstein distance를 나타내고, 수직선은 Table 1에서 training을 중단한 지점이다.
+**(a)** 128 x 128 해상도를 가진 CelebA를 Gulrajani et al. (2017) 네트워크에 넣고 training을 한 것이다. 각 그래프는 Laplacian pyramid의 한 레벨에서 sliced Wasserstein distance를 나타내고, 수직선은 Table 1에서 training을 중단한 지점이다.
 
-(b) Gulrajani et al. (2017)에 progressive growing을 추가한 그래프이다. 점선으로 된 수직선은 G와 D의 해상도를 두 배로 만들 지점을 나타낸다.
+**(b)** Gulrajani et al. (2017)에 progressive growing을 추가한 그래프이다. 점선으로 된 수직선은 G와 D의 해상도를 두 배로 만들 지점을 나타낸다.
 
-(C) 1024 x 1024 해상도에서 raw training speed에서 progressive growing의 효과를 나타낸다.
+**(C)** 1024 x 1024 해상도에서 raw training speed에서 progressive growing의 효과를 나타낸다.
 
 <br>
 
-(b)는 better optimum에 상당히 잘 수렴하고, 총 훈련시간을 약 2배 단축한다. 
+**(b)**는 better optimum에 상당히 잘 수렴하고, 총 훈련시간을 약 2배 단축한다. 
 
-Progressive growing이 없으면, generator와 discriminator의 모든 레이어들은 large-scale variation과 small-scale detail을 위해 간결한 intermediate representations를 동시에 찾는다. 
+Progressive growing이 없으면, generator와 discriminator의 모든 레이어들은 large-scale variation과 small-scale detail을 위해 간결한 intermediate representations를 동시에 찾는다. 그러나 progressive growing이 있으면, 기존의 low-resolution layers는 이미 일찍 수렴될 가능성이 있어서 네트워크는 새로운 레이어가 도입됨에 따라 점점 더 작은 스케일의 효과로 representations를 구체화하는 작업만 담당한다.
 
-그러나 progressive growing이 있으면, 기존의 low-resolution layers는 이미 일찍 수렴될 가능성이 있어서 네트워크는 새로운 레이어가 도입됨에 따라 점점 더 작은 스케일의 효과로 representations를 구체화하는 작업만 담당한다.
+실제로, Figure 4**(b)**에서 largest-scale statistical similarity curve (16)이 optimal value에 매우 빠르게 도달한다. Smaller-scale curves (32, 64, 128)는 동등하게 일관성 있게 수렴한다. 
 
-실제로, 우리는 Figure 4(b)에서 largest-scale statistical similarity curve (16)이 optimal value에 매우 빠르게 도달하고 training의 나머지에 전체적으로 일관성을 유지한다. smaller-scale curves (32, 64, 128)는 해상도가 증가하지만, 각 curve의 수렴은 동등하게 일관성있다. 
+Non-progressive training인 Figure 4**(a)**에서 SWD metric의 각 scale은 예상대로 일정하게 수렴된다.
 
-Figure 4(a)에서 non-progressive training과 함께, SWD metric의 각 scale은 예상대로 대략 일정하게 수렴된다.
-
-progressive growing의 speedup은 결과 해상도가 증가함에 따라 증가한다. Figure 4(c)는 training progress를 보여주고, discriminator에게 보여주는 수많은 real images에서 측정된다. training progresses가 $1024^2$ 해상도까지 진행될 때 training time의 함수로써. 
-
-우리는 progressive growing이 상당한 head start를 얻는다고 생각한다. 왜냐하면 처음에 평가하기에 네트워크는 얕고 빠르기 때문이다. 일단 full resolution에 도달하면, 이미지 처리량은 두 개의 방법들 사이에서 동등해진다. plot는 progressive variant가 96시간 동안 대략 6.4 million images에 도달하는 것을 보여족, 반면 non-progressive variant는 같은 point에 도달하기 위해 대략 520 시간동안 진행될 것이라고 추정된다. 이 경우, progressive growing은 대략 5.4x speedup을 제공한다.
+Figure 4**(c)**에서 progressive growing은 해상도가 증가하면 속도가 증가한다. 
 
 <br>
 
@@ -304,6 +299,10 @@ Figure 7은 $256^2$해상도의 다양한 LSUN categories에서의 결과를 보
 우리의 방법을 사용해서 8.80이라는 높은 점수를 얻었다.
 
 <br>
+
+<br>
+
+PGGAN의 더 세부적인 정보를 알고 싶으면 논문의 부록을 참고하면 된다.
 
 ------
 
