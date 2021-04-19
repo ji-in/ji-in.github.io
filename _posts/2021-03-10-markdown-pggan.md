@@ -268,9 +268,11 @@ minibatch layer 에서 minibatch 단위로 statistics, 즉 평균과 표준편�
 
 가중치를 조정하는 방식은 다음과 같습니다.
 
-![img](file:///C:/Users/jiinkim/AppData/Local/Temp/msohtmlclip1/01/clip_image002.png) 
+$\hat{^{w_{i}}}=^{w_{i}}/c$
 
-![img](file:///C:/Users/jiinkim/AppData/Local/Temp/msohtmlclip1/01/clip_image004.png): weights, ![img](file:///C:/Users/jiinkim/AppData/Local/Temp/msohtmlclip1/01/clip_image006.png): per-layer normalization constant from He’s initialize
+$^{w_{i}}$ : weights
+
+$c$ : per-layer normalization constant from He’s initialize
 
 RMSProp 나 Adam 과 같은 adaptive SGD 방식은 가중치의 scale(크기) 에 관계없이 측정된 표준편차를 이용하여 gradient 를 update 합니다. 
 
@@ -372,7 +374,7 @@ MS-SSIM은 outputs 사이에서의 variation만을 측정하기 때문에 genera
 
 그러나, SWD는 generated images의 분포가 training set 와 유사하다는 것을 올바르게 찾습니다.
 
-=========================================
+------
 
 첫 번째 configuration (a)는 Gulrajani et al. (2017)입니다. 
 
