@@ -52,7 +52,7 @@ PGGAN 을 배우기에 앞서, GAN 에 대해서 먼저 한번 살펴보겠습�
 
 초록색의 solid line 은 generative distribution 입니다.
 
-training을 거친 후에 generator 와 discriminator 가 평형상태에 도달하면, ![img](file:///C:/Users/jiinkim/AppData/Local/Temp/msohtmlclip1/01/clip_image002.png) 가 됩니다. 
+training을 거친 후에 generator 와 discriminator 가 평형상태에 도달하면, $^{P_{g}}=^{P_{data}}$ 가 됩니다. 
 
 그림을 보시면, 검정색 그래프와 초록색 그래프가 일치하는 것을 볼 수 있습니다.
 
@@ -290,9 +290,9 @@ Generator 에서 수행하는 pixelwise feature vector normalization 에 대해 
 
 N : feature map의 수
 
-^{a_{x, y}} : pixel (x, y)에서의 original feature vector
+$^{a_{x, y}}$ : pixel (x, y)에서의 original feature vector
 
-^{b_{x, y}} : pixel (x, y)에서의 normalized feature vector
+$^{b_{x, y}}$ : pixel (x, y)에서의 normalized feature vector
 
 이 방법은 최종적인 결과를 바꾸지 못하지만, training 중에 signal 의 크기가 갑자기 커지는 현상을 막아줍니다.
 
